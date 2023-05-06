@@ -18,17 +18,21 @@ public class KontrolerProgram {
     public TextField txtFrom;
     public TextField txtTo;
     public TextArea txtContent;
+    public String password;
 
+    public String from;
+
+    public void initialize()
+    {
+        from = (DataExchange.odbiorca);
+        password = (DataExchange.haslo);
+        txtFrom.setDisable(true);
+    }
 
     public void btnSendWyslij(ActionEvent actionEvent)
     {
-        //txtFrom.setText(DataExchage.odbiorca);
-        //haslo.setText(DataExchage.haslo);
-
-        String emailDo = txtTo.getText();
-        String from = txtFrom.getText();
-        String tresc = txtContent.getText() ;
-        String password;
+        String to = txtTo.getText();
+        String tresc = txtContent.getText();
 
         Properties properties = System.getProperties();
         properties.put("mail.smtp.auth", "true");
@@ -47,7 +51,7 @@ public class KontrolerProgram {
             Transport.send(message);
             System.out.println("Wiadomość została wysłana!");
         } catch (MessagingException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
 

@@ -14,19 +14,16 @@ public class KontrolerLogowanie {
     public PasswordField txtPassword;
     public TextField txtUser;
 
-    public static String odbiorca;
-
-    public static String haslo;
 
     public void btnLoginClicked(ActionEvent actionEvent) {
         String password = txtPassword.getText();
         String login = txtUser.getText();
 
         try {
-            DataExchage.odbiorca = login;
-            DataExchage.haslo = password;
+            DataExchange.odbiorca = login;
+            DataExchange.haslo = password;
 
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("widokProgram.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("widokPogram.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             Stage stage = new Stage();
             stage.setTitle("Email-Sender");
